@@ -4,4 +4,4 @@ metallbContext:
   ipAdressPools:
     - name: default-pool
       rangeStart: 192.168.0.30
-      rangeStop: 192.168.0.39
+      rangeStop: 192.168.0.49
