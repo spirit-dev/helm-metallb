@@ -31,7 +31,7 @@ help:
 
 ##@ Installation part
 warning: ## A warning to make you warned
-	@echo -e "$$(cat ../ARGOCD-OWNED)\n"
+	@echo -e "$$(cat ./ARGOCD-OWNED)\n"
 	@exit 1
 template: ## Helm template
 	@${HELM_BIN} repo add ${RELEASE_NAME} ${HELM_OFFICIAL_CHART}
