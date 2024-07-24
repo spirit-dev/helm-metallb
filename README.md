@@ -1,5 +1,7 @@
 # Welcome to MetalLB
 
+[![App Status](https://argocd-internal.spirit-dev.net/api/badge?name=metallb-turingpi&revision=true&showAppName=true)](https://argocd-internal.spirit-dev.net/applications/metallb-turingpi)
+
 ## Table of content
 
 - [Welcome to MetalLB](#welcome-to-metallb)
