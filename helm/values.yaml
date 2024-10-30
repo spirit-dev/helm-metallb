@@ -224,10 +224,11 @@ metallb:
       # nobody
       runAsUser: 65534
       fsGroup: 65534
-    resources: {}
+    resources:
+      {}
       # limits:
-        # cpu: 100m
-        # memory: 100Mi
+      # cpu: 100m
+      # memory: 100Mi
     nodeSelector: {}
     tolerations: []
     priorityClassName: ""
@@ -249,6 +250,10 @@ metallb:
       periodSeconds: 10
       successThreshold: 1
       timeoutSeconds: 1
+    tlsMinVersion: "VersionTLS12"
+    tlsCipherSuites: ""
+
+    extraContainers: []
 
   # speaker contains configuration specific to the MetalLB speaker
   # daemonset.
@@ -261,9 +266,13 @@ metallb:
     memberlist:
       enabled: true
       mlBindPort: 7946
+      mlBindAddrOverride: ""
       mlSecretKeyPath: "/etc/ml_secret_key"
     excludeInterfaces:
       enabled: true
+    # ignore the exclude-from-external-loadbalancer label
+    ignoreExcludeLB: false
+
     image:
       repository: quay.io/metallb/speaker
       tag:
@@ -283,14 +292,16 @@ metallb:
       # true, a name is generated using the fullname template
       name: ""
       annotations: {}
+    securityContext: {}
     ## Defines a secret name for the controller to generate a memberlist encryption secret
     ## By default secretName: {{ "metallb.fullname" }}-memberlist
     ##
     # secretName:
-    resources: {}
+    resources:
+      {}
       # limits:
-        # cpu: 100m
-        # memory: 100Mi
+      # cpu: 100m
+      # memory: 100Mi
     nodeSelector: {}
     tolerations: []
     priorityClassName: ""
@@ -323,7 +334,7 @@ metallb:
       enabled: true
       image:
         repository: quay.io/frrouting/frr
-        tag: 8.4.2
+        tag: 9.1.0
         pullPolicy:
       metricsPort: 7473
       resources: {}
@@ -338,6 +349,19 @@ metallb:
     frrMetrics:
       resources: {}
 
+    extraContainers: []
+
   crds:
     enabled: true
     validationFailurePolicy: Fail
+
+  # frrk8s contains the configuration related to using an frrk8s instance
+  # (github.com/metallb/frr-k8s) as the backend for the BGP implementation.
+  # This allows configuring additional frr parameters in combination to those
+  # applied by MetalLB.
+  frrk8s:
+    # if set, enables frrk8s as a backend. This is mutually exclusive to frr
+    # mode.
+    enabled: false
+    external: false
+    namespace: ""
