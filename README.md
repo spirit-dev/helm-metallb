@@ -4,9 +4,7 @@
 
 ## Table of content
 
-- [Welcome to MetalLB](#welcome-to-metallb)
-  - [Table of content](#table-of-content)
-  - [Installation process](#installation-process)
+[[_TOC_]]
 
 ## Installation process
 
