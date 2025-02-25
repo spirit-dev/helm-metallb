@@ -43,7 +43,7 @@ metallb:
     # certificate to be used.
     controllerMetricsTLSSecret: ""
 
-    # prometheus doens't have the permission to scrape all namespaces so we give it permission to scrape metallb's one
+    # prometheus doesn't have the permission to scrape all namespaces so we give it permission to scrape metallb's one
     rbacPrometheus: true
 
     # the service account used by prometheus
@@ -65,7 +65,7 @@ metallb:
       # enable support for Prometheus Operator
       enabled: false
 
-      # optional additionnal labels for podMonitors
+      # optional additional labels for podMonitors
       additionalLabels: {}
 
       # optional annotations for podMonitors
@@ -144,7 +144,7 @@ metallb:
       # enable alertmanager alerts
       enabled: false
 
-      # optional additionnal labels for prometheusRules
+      # optional additional labels for prometheusRules
       additionalLabels: {}
 
       # optional annotations for prometheusRules
@@ -166,7 +166,7 @@ metallb:
       addressPoolExhausted:
         enabled: true
         labels:
-          severity: alert
+          severity: critical
 
       addressPoolUsage:
         enabled: true
@@ -179,13 +179,13 @@ metallb:
               severity: warning
           - percent: 95
             labels:
-              severity: alert
+              severity: critical
 
       # MetalLBBGPSessionDown
       bgpSessionDown:
         enabled: true
         labels:
-          severity: alert
+          severity: critical
 
       extraAlerts: []
 
