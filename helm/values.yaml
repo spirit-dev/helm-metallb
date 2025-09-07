@@ -173,6 +173,8 @@ metallb:
         enabled: true
         labels:
           severity: critical
+        # Exclude the pools matching the regular expression from triggering the alert.
+        excludePools: ""
 
       addressPoolUsage:
         enabled: true
@@ -186,6 +188,8 @@ metallb:
           - percent: 95
             labels:
               severity: critical
+        # Exclude the pools matching the regular expression from triggering the alert.
+        excludePools: ""
 
       # MetalLBBGPSessionDown
       bgpSessionDown:
@@ -270,6 +274,7 @@ metallb:
     logLevel: info
     tolerateMaster: true
     memberlist:
+      # --  When enabled: false, the speaker pods must run on all nodes
       enabled: true
       mlBindPort: 7946
       mlBindAddrOverride: ""
