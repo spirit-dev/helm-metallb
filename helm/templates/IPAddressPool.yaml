@@ -1,0 +1,12 @@
+{{- $ns := .Release.Namespace }}
+{{- range .Values.metallbContext.ipAdressPools }}
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: {{ .name }}
+  namespace: {{ $ns }}
+spec:
+  addresses:
+    - {{ .rangeStart }}-{{.rangeStop }}
+{{- end }}
