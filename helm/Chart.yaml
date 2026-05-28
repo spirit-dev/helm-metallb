@@ -8,7 +8,7 @@ icon: https://metallb.universe.tf/images/logo/metallb-white.png
 dependencies:
   - name: metallb
     repository: https://metallb.github.io/metallb
-    version: 0.16.0
+    version: 0.16.1
 
 type: application
 
